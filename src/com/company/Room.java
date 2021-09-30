@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Room {
     private String roomName;
     private String roomDescription;
@@ -8,6 +10,14 @@ public class Room {
     private Room south;
     private Room west;
     private boolean currentRoom;
+    private ArrayList<Item> itemList = new ArrayList<>();
+
+    public Room(String roomName, String roomDescription, boolean currentRoom, ArrayList<Item> itemList) {
+        this.roomName = roomName;
+        this.roomDescription = roomDescription;
+        this.currentRoom = currentRoom;
+        this.itemList = itemList;
+    }
 
     public boolean isCurrentRoom() {
         return currentRoom;
@@ -49,14 +59,16 @@ public class Room {
         this.west = west;
     }
 
-    public Room(String roomName, String roomDescription, boolean currentRoom) {
-        this.roomName = roomName;
-        this.roomDescription = roomDescription;
-        this.currentRoom = currentRoom;
-    }
-
     public String getRoomDescription() {
-        return roomDescription;
+        if (itemList.size() > 0) {
+            String description =  roomDescription  + "\nThis room contains: ";
+            for (int i = 0; i < itemList.size(); i++){
+                description += "\n" + itemList.get(i).getItemDescription();
+            }
+            return description;
+        } else {
+            return roomDescription;
+        }
     }
 
     public String getRoomName() {
