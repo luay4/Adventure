@@ -26,6 +26,8 @@ public class Adventure {
         Item dagger = new Item("dagger", "a dagger made of silver");
         room7Items.add(dagger);
 
+        Player player = new Player();
+
 
         Room room1 = new Room("Room 1", "The first room you will start, will not take your life apart", true, room1Items);
         Room room2 = new Room("Room 2", "Some rocks are lying at the bottom of the room, it is very humid", false, room2Items);
@@ -38,6 +40,7 @@ public class Adventure {
                 "He must die before you can continue", false, room8Items);
         Room room9 = new Room("Room 9", "There is a cupboard with some bread and meat", false, room9Items);
         Room currentRoom = room1;
+        player.setCurrentRoomPlayer(currentRoom);
 
         room1.setDirection(null, room2, room4, null);
         room2.setDirection(null, room3, null, room1);
@@ -49,7 +52,7 @@ public class Adventure {
         room8.setDirection(room5, room9, null, room7);
         room9.setDirection(room6, null, null, room8);
 
-        Player player = new Player();
+
 
         System.out.println("Welcome to this adventure game\n");
 
@@ -122,8 +125,9 @@ public class Adventure {
                 break;
             } else if (input.equals("inventory") || input.equals("i")) {
                 System.out.println(player.getInventory());
-            } else if (input.equals("take") || input.equals("t")) {
-
+            } else if (input.startsWith("take")) {
+                String itemName = input.substring(5);
+                player.take(itemName);
             } else if (input.equals("drop") || input.equals("d")) {
 
             } else {

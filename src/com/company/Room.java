@@ -10,7 +10,7 @@ public class Room {
     private Room south;
     private Room west;
     private boolean currentRoom;
-    private ArrayList<Item> itemList = new ArrayList<>();
+    public ArrayList<Item> itemList = new ArrayList<>();
 
     public Room(String roomName, String roomDescription, boolean currentRoom, ArrayList<Item> itemList) {
         this.roomName = roomName;
