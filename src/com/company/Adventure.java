@@ -39,8 +39,8 @@ public class Adventure {
         Room room8 = new Room("Room 8", "In the middle of the room stands an ugly orc, who seems hostile. " +
                 "He must die before you can continue", false, room8Items);
         Room room9 = new Room("Room 9", "There is a cupboard with some bread and meat", false, room9Items);
-        Room currentRoom = room1;
-        player.setCurrentRoomPlayer(currentRoom);
+        // Room currentRoom = room1;
+        player.setCurrentRoomPlayer(room1);
 
         room1.setDirection(null, room2, room4, null);
         room2.setDirection(null, room3, null, room1);
@@ -52,11 +52,13 @@ public class Adventure {
         room8.setDirection(room5, room9, null, room7);
         room9.setDirection(room6, null, null, room8);
 
+        // System.out.println(rock.findItem);
+
 
 
         System.out.println("Welcome to this adventure game\n");
 
-        System.out.println("You are now in " + currentRoom.getRoomName() + "\n " + currentRoom.getRoomDescription());
+        System.out.println("You are now in " + player.getCurrentRoomPlayer().getRoomName() + "\n " + player.getCurrentRoomPlayer().getRoomDescription());
         System.out.println("Which direction do you want to go to?: ");
         while (true) {
             Scanner in = new Scanner(System.in);
@@ -72,50 +74,22 @@ public class Adventure {
             // }
 
             if (input.equals("go north") || input.equals("north") || input.equals("n")) {
-                if (currentRoom.getNorth() == null) {
-                    System.out.println("you cannot go there");
-                } else {
-                    System.out.println("Going north\n");
-                    currentRoom = currentRoom.getNorth();
-                    System.out.println(currentRoom.getRoomName());
-                    System.out.println(currentRoom.getRoomDescription());
-                }
+                player.goNorth();
             }
 
             else if (input.equals("go south") || input.equals("south") || input.equals("s")) {
-                if (currentRoom.getSouth() == null) {
-                    System.out.println("you cannot go there");
-                } else {
-                    System.out.println("Going south\n");
-                    currentRoom = currentRoom.getSouth();
-                    System.out.println(currentRoom.getRoomName());
-                    System.out.println(currentRoom.getRoomDescription());
-                }
+                player.goSouth();
             }
 
             else if (input.equals("go east") || input.equals("east") || input.equals("e")) {
-                if (currentRoom.getEast() == null) {
-                    System.out.println("you cannot go there");
-                } else {
-                    System.out.println("Going east\n");
-                    currentRoom = currentRoom.getEast();
-                    System.out.println(currentRoom.getRoomName());
-                    System.out.println(currentRoom.getRoomDescription());
-                }
+                player.goEast();
             }
 
             else if (input.equals("go west") || input.equals("west") || input.equals("w")) {
-                if (currentRoom.getWest() == null) {
-                    System.out.println("you cannot go there");
-                } else {
-                    System.out.println("Going west\n");
-                    currentRoom = currentRoom.getWest();
-                    System.out.println(currentRoom.getRoomName());
-                    System.out.println(currentRoom.getRoomDescription());
-                }
+                player.goWest();
             }
             else if (input.equals("look") || input.equals("l")) {
-                System.out.println(currentRoom.getRoomDescription());
+                System.out.println(player.getCurrentRoomPlayer().getRoomDescription());
             } else if (input.equals("help") || (input.equals("h"))) {
                 System.out.println("Controls:\n Type 'look' to get the description of the current room" +
                         "\n Type any direction (north, east, south and west) to move to another room" +
@@ -126,10 +100,15 @@ public class Adventure {
             } else if (input.equals("inventory") || input.equals("i")) {
                 System.out.println(player.getInventory());
             } else if (input.startsWith("take")) {
-                String itemName = input.substring(5);
-                player.take(itemName);
-            } else if (input.equals("drop") || input.equals("d")) {
-
+                if (input.contains(" ")) {
+                    String itemName = input.substring(input.indexOf(" ") + 1);
+                    player.take(itemName);
+                }
+            } else if (input.startsWith("drop")) {
+                if (input.contains(" ")) {
+                    String itemName = input.substring(input.indexOf(" ") + 1);
+                    player.drop(itemName);
+                }
             } else {
                 System.out.println("Cannot do that, try something else");
             }

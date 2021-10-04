@@ -24,4 +24,9 @@ public class Item {
     public void setItemDescription(String itemDescription) {
         this.itemDescription = itemDescription;
     }
+
+    @Override
+    public String toString() {
+        return itemName;
+    }
 }
