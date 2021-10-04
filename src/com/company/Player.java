@@ -103,4 +103,13 @@ public class Player {
             System.out.println(currentRoomPlayer.getRoomDescription());
         }
     }
+
+    public String printInventory() {
+        String inventoryString = "Inventory:\n";
+        for (int i = 0; i < inventory.size(); i++) {
+            inventoryString += inventory.get(i).getItemName()+ "\n";
+
+        }
+        return inventoryString;
+    }
 }

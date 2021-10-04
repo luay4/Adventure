@@ -98,7 +98,8 @@ public class Adventure {
                 System.out.println("Thanks for playing");
                 break;
             } else if (input.equals("inventory") || input.equals("i")) {
-                System.out.println(player.getInventory());
+                // System.out.println("Inventory: " + player.getInventory());
+                System.out.println(player.printInventory());
             } else if (input.startsWith("take")) {
                 if (input.contains(" ")) {
                     String itemName = input.substring(input.indexOf(" ") + 1);
