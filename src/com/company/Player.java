@@ -4,7 +4,12 @@ import java.util.ArrayList;
 
 public class Player {
     private ArrayList<Item> inventory = new ArrayList<>();
-    private Room currentRoomPlayer;
+    private Room currentRoom;
+    private int health;
+
+    public Player(Room currentroom) {
+        this.currentRoom = currentroom;
+    }
 
     public ArrayList<Item> getInventory() {
         return inventory;
@@ -14,7 +19,7 @@ public class Player {
         Item itemFound = findItem(item);
         if (itemFound != null) {
             inventory.add(itemFound);
-            currentRoomPlayer.itemList.remove(itemFound);
+            currentRoom.itemList.remove(itemFound);
             System.out.println(itemFound + " has been added to the inventory");
         } else {
             System.out.println("Could not find item");
@@ -24,7 +29,7 @@ public class Player {
     public void drop(String item) {
         Item itemFound = findItemInventory(item);
         if (itemFound != null) {
-            currentRoomPlayer.itemList.add(itemFound);
+            currentRoom.itemList.add(itemFound);
             inventory.remove(itemFound);
             System.out.println(itemFound + " has been dropped");
         } else {
@@ -32,17 +37,17 @@ public class Player {
         }
     }
 
-    public Room getCurrentRoomPlayer() {
-        return currentRoomPlayer;
+    public Room getCurrentRoom() {
+        return currentRoom;
     }
 
-    public void setCurrentRoomPlayer(Room currentRoomPlayer) {
-        this.currentRoomPlayer = currentRoomPlayer;
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
     }
 
     public Item findItem(String itemName) {
-        for (int i = 0; i < currentRoomPlayer.itemList.size(); i++) {
-            Item requestedItem = currentRoomPlayer.itemList.get(i);
+        for (int i = 0; i < currentRoom.itemList.size(); i++) {
+            Item requestedItem = currentRoom.itemList.get(i);
             if (requestedItem.getItemName().equals(itemName)) {
                 return requestedItem;
             }
@@ -61,46 +66,46 @@ public class Player {
     }
 
     public void goNorth() {
-        if (currentRoomPlayer.getNorth() == null) {
+        if (currentRoom.getNorth() == null) {
             System.out.println("you cannot go there");
         } else {
             System.out.println("Going north\n");
-            setCurrentRoomPlayer(currentRoomPlayer.getNorth());
-            System.out.println(currentRoomPlayer.getRoomName());
-            System.out.println(currentRoomPlayer.getRoomDescription());
+            setCurrentRoom(currentRoom.getNorth());
+            System.out.println(currentRoom.getRoomName());
+            System.out.println(currentRoom.getRoomDescription());
         }
     }
 
     public void goEast() {
-        if (currentRoomPlayer.getEast() == null) {
+        if (currentRoom.getEast() == null) {
             System.out.println("you cannot go there");
         } else {
             System.out.println("Going east\n");
-            setCurrentRoomPlayer(currentRoomPlayer.getEast());
-            System.out.println(currentRoomPlayer.getRoomName());
-            System.out.println(currentRoomPlayer.getRoomDescription());
+            setCurrentRoom(currentRoom.getEast());
+            System.out.println(currentRoom.getRoomName());
+            System.out.println(currentRoom.getRoomDescription());
         }
     }
 
     public void goSouth() {
-        if (currentRoomPlayer.getSouth() == null) {
+        if (currentRoom.getSouth() == null) {
             System.out.println("you cannot go there");
         } else {
             System.out.println("Going south\n");
-            setCurrentRoomPlayer(currentRoomPlayer.getSouth());
-            System.out.println(currentRoomPlayer.getRoomName());
-            System.out.println(currentRoomPlayer.getRoomDescription());
+            setCurrentRoom(currentRoom.getSouth());
+            System.out.println(currentRoom.getRoomName());
+            System.out.println(currentRoom.getRoomDescription());
         }
     }
 
     public void goWest() {
-        if (currentRoomPlayer.getWest() == null) {
+        if (currentRoom.getWest() == null) {
             System.out.println("you cannot go there");
         } else {
             System.out.println("Going west\n");
-            setCurrentRoomPlayer(currentRoomPlayer.getWest());
-            System.out.println(currentRoomPlayer.getRoomName());
-            System.out.println(currentRoomPlayer.getRoomDescription());
+            setCurrentRoom(currentRoom.getWest());
+            System.out.println(currentRoom.getRoomName());
+            System.out.println(currentRoom.getRoomDescription());
         }
     }
 

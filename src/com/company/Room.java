@@ -10,13 +10,12 @@ public class Room {
     private Room south;
     private Room west;
     private boolean currentRoom;
-    public ArrayList<Item> itemList = new ArrayList<>();
+    ArrayList<Item> itemList = new ArrayList<>();
 
-    public Room(String roomName, String roomDescription, boolean currentRoom, ArrayList<Item> itemList) {
+    public Room(String roomName, String roomDescription, boolean currentRoom) {
         this.roomName = roomName;
         this.roomDescription = roomDescription;
         this.currentRoom = currentRoom;
-        this.itemList = itemList;
     }
 
     public boolean isCurrentRoom() {
@@ -73,6 +72,10 @@ public class Room {
 
     public String getRoomName() {
         return roomName;
+    }
+
+    public void addItem(Item item) {
+        itemList.add(item);
     }
 
 
