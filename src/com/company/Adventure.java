@@ -18,15 +18,6 @@ public class Adventure {
         while (true) {
             Scanner in = new Scanner(System.in);
             String input = in.nextLine().toLowerCase();
-        // requesteRoom = null;
-         //   Room requestedRoom = currentRoom.getNorth();
-
-            // public void setNorth(Room north) {
-            //  this.north = north;
-            //  if(north.south != this) {
-            //  north.setSouth(this);
-            //   }
-            // }
 
             /*switch (input) {
                 case "go north", "north", "n":
@@ -59,7 +50,7 @@ public class Adventure {
                 player.goWest();
             }
             else if (input.equals("look") || input.equals("l")) {
-                System.out.println(player.getCurrentRoom().getRoomDescription());
+                player.look();
             } else if (input.equals("help") || (input.equals("h"))) {
                 System.out.println("Controls:\n Type 'look' to get the description of the current room" +
                         "\n Type any direction (north, east, south and west) to move to another room" +
@@ -68,7 +59,6 @@ public class Adventure {
                 System.out.println("Thanks for playing");
                 break;
             } else if (input.equals("inventory") || input.equals("i")) {
-                // System.out.println("Inventory: " + player.getInventory());
                 System.out.println(player.printInventory());
             } else if (input.startsWith("take")) {
                 if (input.contains(" ")) {
@@ -80,6 +70,18 @@ public class Adventure {
                     String itemName = input.substring(input.indexOf(" ") + 1);
                     player.drop(itemName);
                 }
+            } else if (input.startsWith("eat")) {
+                if (input.contains(" ")) {
+                    String itemName = input.substring(input.indexOf(" ") + 1);
+                    player.eat(itemName);
+                }
+            } else if (input.startsWith("equip")) {
+                if (input.contains(" ")) {
+                    String itemName = input.substring(input.indexOf(" ") + 1);
+                    player.equip(itemName);
+                }
+            } else if (input.startsWith("attack")) {
+                player.attack();
             } else {
                 System.out.println("Cannot do that, try something else");
             }

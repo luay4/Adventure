@@ -39,7 +39,13 @@ public class Map {
         room2.addItem(coins);
         Item key = new Item("key", "a rusty old key");
         room6.addItem(key);
-        Item dagger = new Item("dagger", "a dagger made of silver");
+        Weapon dagger = new Weapon("dagger", "a dagger made of silver", 10);
         room7.addItem(dagger);
+        Food bread = new Food("bread", "a large loaf of bread", 10, false);
+        Food meat = new Food("meat", "some old horse meat", 15, true);
+        room9.addItem(bread);
+        room9.addItem(meat);
+        Weapon uzi = new Weapon("uzi", "what kind of fuckery is this??", 5, 5);
+        room1.addItem(uzi);
     }
 }

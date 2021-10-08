@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class Player {
     private ArrayList<Item> inventory = new ArrayList<>();
     private Room currentRoom;
-    private int health;
+    private int health = 50;
+    private Weapon currentWeapon;
 
     public Player(Room currentroom) {
         this.currentRoom = currentroom;
@@ -116,5 +117,86 @@ public class Player {
 
         }
         return inventoryString;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public Weapon getCurrentWeapon() {
+        return currentWeapon;
+    }
+
+    public void setCurrentWeapon(Weapon currentWeapon) {
+        this.currentWeapon = currentWeapon;
+    }
+
+    public void eat(String foodName) {
+        Item requestedFood = findItemInventory(foodName);
+        if (requestedFood == null) {
+            System.out.println("Could not find the food you are looking for");
+        }
+        else if (requestedFood instanceof Food) {
+            if (((Food) requestedFood).isPoisonous()) {
+                health -= ((Food) requestedFood).getHealing();
+                inventory.remove(requestedFood);
+                System.out.println("The " + requestedFood.getItemName() + " was poisonous! " +
+                        "You just lost " + ((Food) requestedFood).getHealing() + " health!");
+            } else {
+                health += ((Food) requestedFood).getHealing();
+                inventory.remove(requestedFood);
+                System.out.println("Eating the " + requestedFood.getItemName() + " healed "
+                        + ((Food) requestedFood).getHealing() + " health!");
+            }
+        } else {
+            System.out.println(requestedFood.getItemName() + " is not food");
+        }
+    }
+
+    public void equip(String weaponName) {
+        Item requestedWeapon = findItemInventory(weaponName);
+        if (requestedWeapon == null) {
+            System.out.println("Could not find weapon in inventory");
+        }
+        else if (requestedWeapon instanceof Weapon) {
+            currentWeapon = (Weapon) requestedWeapon;
+            System.out.println(requestedWeapon.getItemName() + " has been equipped");
+        }
+        else {
+            System.out.println(requestedWeapon.getItemName() + " is not a weapon");
+        }
+    }
+
+    public void attack() {
+        if (currentWeapon == null) {
+            System.out.println("Cannot attack without a weapon equipped");
+        } else if (currentWeapon.getAmmo() > 0) {
+            System.out.println("You fire your weapon");
+            currentWeapon.setAmmo(currentWeapon.getAmmo() - 1);
+        } else if (currentWeapon.getAmmo() == 0) {
+            System.out.println("You are out of ammo");
+        }
+        else {
+            System.out.println("You attack with your weapon");
+        }
+    }
+
+    public void look() {
+        System.out.println(currentRoom.getRoomDescription());
+        System.out.println("Current health: " + health);
+        if (currentWeapon != null) {
+            if (currentWeapon.getAmmo() != -1) {
+                System.out.println("Equipped weapon: " + currentWeapon.getItemName()
+                        + "  weapon damage: " + currentWeapon.getWeaponDamage() + "  ammo: " +
+                        currentWeapon.getAmmo());
+            } else {
+                System.out.println("Equipped weapon: " + currentWeapon.getItemName()
+                        + "  weapon damage: " + currentWeapon.getWeaponDamage());
+            }
+        }
     }
 }
