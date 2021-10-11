@@ -66,6 +66,16 @@ public class Player {
         return null;
     }
 
+    public Enemy findEnemy(String enemyName) {
+        for (int i = 0; i < currentRoom.enemyList.size(); i++) {
+            Enemy requestedEnemy = currentRoom.enemyList.get(i);
+            if (requestedEnemy.getEnemyName().equals(enemyName)) {
+                return requestedEnemy;
+            }
+        }
+        return null;
+    }
+
     public void goNorth() {
         if (currentRoom.getNorth() == null) {
             System.out.println("you cannot go there");
@@ -171,18 +181,41 @@ public class Player {
         }
     }
 
-    public void attack() {
-        if (currentWeapon == null) {
-            System.out.println("Cannot attack without a weapon equipped");
-        } else if (currentWeapon.getAmmo() > 0) {
-            System.out.println("You fire your weapon");
-            currentWeapon.setAmmo(currentWeapon.getAmmo() - 1);
-        } else if (currentWeapon.getAmmo() == 0) {
-            System.out.println("You are out of ammo");
+    public void attack(String enemy) {
+        Enemy enemyNPC = findEnemy(enemy);
+        if (enemyNPC == null) {
+            System.out.println("There are no enemies of that kind in this room");
+        } else {
+            if (currentWeapon == null) {
+                System.out.println("Cannot attack without a weapon equipped");
+            } else if (currentWeapon.getAmmo() > 0) {
+                System.out.println("You fire your weapon");
+                currentWeapon.setAmmo(currentWeapon.getAmmo() - 1);
+            } else if (currentWeapon.getAmmo() == 0) {
+                System.out.println("You are out of ammo");
+            }
+            else {
+                System.out.println("You attack with your weapon");
+                enemyNPC.dealDamageToEnemy(getCurrentWeapon().getWeaponDamage());
+                System.out.print("Enemy hp: ");
+                System.out.println(enemyNPC.getEnemyHealth());
+                if (enemyNPC.getEnemyHealth() <= 0) {
+                    System.out.println("You killed the enemy!");
+                    currentRoom.enemyList.remove(enemyNPC);
+                }
+                System.out.println("The enemy attacks");
+                enemyAttacks(enemyNPC.getEnemyDamage());
+                System.out.print("Your hp: ");
+                System.out.println(health);
+                if (health <= 0) {
+                    System.out.println("You died!");
+                }
+            }
         }
-        else {
-            System.out.println("You attack with your weapon");
-        }
+    }
+
+    public void enemyAttacks(int enemyDamage) {
+        health = health - enemyDamage;
     }
 
     public void look() {

@@ -11,6 +11,7 @@ public class Adventure {
         Room currentRoom = map.getCurrentRoom();
         Player player = new Player(currentRoom);
 
+
         System.out.println("Welcome to this adventure game\n");
 
         System.out.println("You are now in " + player.getCurrentRoom().getRoomName() + "\n " + player.getCurrentRoom().getRoomDescription());
@@ -81,7 +82,10 @@ public class Adventure {
                     player.equip(itemName);
                 }
             } else if (input.startsWith("attack")) {
-                player.attack();
+                if (input.contains(" ")) {
+                    String itemName = input.substring(input.indexOf(" ") + 1);
+                    player.attack(itemName);
+                }
             } else {
                 System.out.println("Cannot do that, try something else");
             }

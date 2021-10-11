@@ -11,6 +11,7 @@ public class Room {
     private Room west;
     private boolean currentRoom;
     ArrayList<Item> itemList = new ArrayList<>();
+    ArrayList<Enemy> enemyList = new ArrayList<>();
 
     public Room(String roomName, String roomDescription, boolean currentRoom) {
         this.roomName = roomName;
@@ -76,6 +77,10 @@ public class Room {
 
     public void addItem(Item item) {
         itemList.add(item);
+    }
+
+    public void addEnemy(Enemy enemy) {
+        enemyList.add(enemy);
     }
 
 

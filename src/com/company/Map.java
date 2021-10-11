@@ -47,5 +47,9 @@ public class Map {
         room9.addItem(meat);
         Weapon uzi = new Weapon("uzi", "what kind of fuckery is this??", 5, 5);
         room1.addItem(uzi);
+
+        Enemy orc = new Enemy(20, 3, "orc", "a big ugly orc", room8);
+        room8.addEnemy(orc);
+
     }
 }
