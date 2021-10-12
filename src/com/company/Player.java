@@ -188,11 +188,13 @@ public class Player {
         } else {
             if (currentWeapon == null) {
                 System.out.println("Cannot attack without a weapon equipped");
-            } else if (currentWeapon.getAmmo() > 0) {
-                System.out.println("You fire your weapon");
-                currentWeapon.setAmmo(currentWeapon.getAmmo() - 1);
-            } else if (currentWeapon.getAmmo() == 0) {
-                System.out.println("You are out of ammo");
+            } else if (currentWeapon instanceof ShootingWeapon) {
+                if (((ShootingWeapon) currentWeapon).getAmmo() > 0) {
+                    System.out.println("You fire your weapon");
+                    ((ShootingWeapon) currentWeapon).setAmmo(((ShootingWeapon) currentWeapon).getAmmo() - 1);
+                } else {
+                    System.out.println("Out of ammo");
+                }
             }
             else {
                 System.out.println("You attack with your weapon");
@@ -235,10 +237,10 @@ public class Player {
             System.out.println("You are at critical health, try not to die");
         }
         if (currentWeapon != null) {
-            if (currentWeapon.getAmmo() != -1) {
+            if (currentWeapon instanceof ShootingWeapon) {
                 System.out.println("Equipped weapon: " + currentWeapon.getItemName()
                         + "  weapon damage: " + currentWeapon.getWeaponDamage() + "  ammo: " +
-                        currentWeapon.getAmmo());
+                        ((ShootingWeapon) currentWeapon).getAmmo());
             } else {
                 System.out.println("Equipped weapon: " + currentWeapon.getItemName()
                         + "  weapon damage: " + currentWeapon.getWeaponDamage());
@@ -249,6 +251,9 @@ public class Player {
     public void help() {
         System.out.println("Controls:\n Type 'look' to get the description of the current room with its items and weapon and health status" +
                 "\n Type any direction (north, east, south and west) to move to another room" +
-                "\n Type 'exit' to quit the game");
+                "\n Type on of these commands followed with the item that you want to interact with:\n" +
+                "'take', 'drop', 'eat' and 'equip'\n" +
+                " Type 'attack' followed by the name of the enemy in order to attack\n" +
+                " Type 'exit' to quit the game");
     }
 }
