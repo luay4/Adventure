@@ -10,14 +10,14 @@ public class Map {
     }
 
     public Map() {
-        Room room1 = new Room("Room 1", "Greetings earthling! look around in the woods, there is some shoes and an axe hidden behind the bushes- See if you want them. Continue to the next room to see what what lays within", true);
-        Room room2 = new Room("Room 2", "The sun is over your head and it's hot, remember to get yourself hydrated - Look around to see if there is something do drink and eat", false);
+        Room room1 = new Room("Room 1", "Greetings earthling! look around in the woods, \n there is some shoes and an axe hidden behind the bushes- See if you want them. Continue to the next room to see what what lays within", true);
+        Room room2 = new Room("Room 2", "The sun is over your head and it's hot, remember to get yourself hydrated \n- Look around to see if there is something do drink and eat", false);
         Room room3 = new Room("Room 3", "Dang it! you are up on a treehouse. you can see a village some miles ahead - look at the bookshelf to see if you can find something", false);
         Room room4 = new Room("Room 4", "You got yourself inside a rabbit hole. find anything there?", false);
         Room room5 = new Room("Room 5", "You have defeated the orc. there is a castle further ahead. dare to go inside?", false);
-        Room room6 = new Room("Room 6", "The village is getting closer and closer and you are starting to get hungry now - see if you can find some food, dut be careful now!", false);
+        Room room6 = new Room("Room 6", "The village is getting closer and closer and you are starting to get hungry now \n- see if you can find some food, dut be careful now!", false);
         Room room7 = new Room("Room 7", "It seems that someone forgot his sword - it could be helpful in the future", false);
-        Room room8 = new Room("Room 8", "In the middle of the room stands an ugly orc, who seems hostile. He is guarding the porch that leads to something. Defeat him or die! ", false);
+        Room room8 = new Room("Room 8", "In the middle of the room stands an ugly orc, who seems hostile. \n He is guarding the porch that leads to something. Defeat him or die! ", false);
         Room room9 = new Room("Room 9", "Get through the guards and pay them the toll to continue your journey", false);
         currentRoom = room1;
 
