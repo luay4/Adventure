@@ -47,8 +47,8 @@ public class Map {
         room9.addItem(meat);
         MeleeWeapon axe = new MeleeWeapon("axe", "use it if you want to", 5);
         room1.addItem(axe);
-        Item shoe = new Item("shoes", "a pair of shoes to comfort your bare feet");
-        room1.addItem(shoe);
+        Item shoes = new Item("shoes", "a pair of shoes to comfort your bare feet");
+        room1.addItem(shoes);
 
         MeleeWeapon club = new MeleeWeapon("club","a bloodsoaked club", 8);
 
