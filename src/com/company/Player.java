@@ -8,8 +8,8 @@ public class Player {
     private int health = 50;
     private Weapon currentWeapon;
 
-    public Player(Room currentroom) {
-        this.currentRoom = currentroom;
+    public Player(Room currentRoom) {
+        this.currentRoom = currentRoom;
     }
 
     public ArrayList<Item> getInventory() {
@@ -244,5 +244,11 @@ public class Player {
                         + "  weapon damage: " + currentWeapon.getWeaponDamage());
             }
         }
+    }
+
+    public void help() {
+        System.out.println("Controls:\n Type 'look' to get the description of the current room with its items and weapon and health status" +
+                "\n Type any direction (north, east, south and west) to move to another room" +
+                "\n Type 'exit' to quit the game");
     }
 }

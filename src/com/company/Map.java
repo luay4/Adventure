@@ -51,7 +51,7 @@ public class Map {
         Item shoe = new Item("shoe", " gives you more style for the ladies out there");
         room1.addItem(shoe);
 
-        Weapon club = new Weapon("club","a blodsoaked club", 8);
+        Weapon club = new Weapon("club","a bloodsoaked club", 8);
 
         Enemy orc = new Enemy(20, "orc", "a big ugly orc", club);
         room8.addEnemy(orc);

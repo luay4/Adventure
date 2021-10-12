@@ -1,5 +1,6 @@
 package com.company;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Adventure {
@@ -11,12 +12,13 @@ public class Adventure {
         Room currentRoom = map.getCurrentRoom();
         Player player = new Player(currentRoom);
 
+        boolean goOn = true;
 
-        System.out.println("Welcome to this adventure game\n");
+        System.out.println("Welcome to the spooky forest game >:D\n");
 
         System.out.println("You are now in " + player.getCurrentRoom().getRoomName() + "\n " + player.getCurrentRoom().getRoomDescription());
         System.out.println("Which direction do you want to go to?: ");
-        while (true) {
+        while (goOn) {
             Scanner in = new Scanner(System.in);
             String input = in.nextLine().toLowerCase();
 
@@ -32,6 +34,19 @@ public class Adventure {
                     break;
                 case "go west", "west", "w":
                     player.goWest();
+                    break;
+                case "look", "l":
+                    player.look();
+                    break;
+                case "help", "h":
+                    player.help();
+                    break;
+                case "exit":
+                    System.out.println("Thanks for playing!");
+                    goOn = false;
+                    break;
+                case "inventory", "i":
+                    System.out.println(player.printInventory());
                     break;
             }*/
 
@@ -53,9 +68,7 @@ public class Adventure {
             else if (input.equals("look") || input.equals("l")) {
                 player.look();
             } else if (input.equals("help") || (input.equals("h"))) {
-                System.out.println("Controls:\n Type 'look' to get the description of the current room" +
-                        "\n Type any direction (north, east, south and west) to move to another room" +
-                        "\n Type 'exit' to quit the game");
+                player.help();
             } else if (input.equals("exit") || input.equals("ex")) {
                 System.out.println("Thanks for playing");
                 break;
