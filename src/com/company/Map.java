@@ -31,7 +31,7 @@ public class Map {
         room8.setDirection(room5, room9, null, room7);
         room9.setDirection(room6, null, null, room8);
 
-        Weapon axe = new Weapon("axe", "use it if you want to", 5, 5);
+        Weapon axe = new MeleeWeapon("axe", "use it if you want to", 5);
         room1.addItem(axe);
         Item shoes = new Item("shoes", "a pair of shoes to comfort your bare feet");
         room1.addItem(shoes);
@@ -45,7 +45,7 @@ public class Map {
         Food meat = new Food("meat", "some old horse meat", 15, true);
         room6.addItem(bread);
         room6.addItem(meat);
-        Weapon sword = new Weapon("sword", "Better than Excalibur", 10);
+        Weapon sword = new MeleeWeapon("sword", "Better than Excalibur", 10);
         room7.addItem(sword);
         Item key = new Item("key", "Maybe it's the key you need for something");
         room8.addItem(key);
@@ -55,7 +55,7 @@ public class Map {
 
 
 
-        Weapon club = new Weapon("club","a bloodsoaked club", 8);
+        Weapon club = new MeleeWeapon("club","a bloodsoaked club", 8);
 
         Enemy orc = new Enemy(20, "orc", "a big ugly orc", club);
         room8.addEnemy(orc);
