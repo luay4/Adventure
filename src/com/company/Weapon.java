@@ -19,10 +19,6 @@ public class Weapon extends Item {
         return weaponDamage;
     }
 
-    public void setWeaponDamage(int weaponDamage) {
-        this.weaponDamage = weaponDamage;
-    }
-
     public int getAmmo() {
         return ammo;
     }

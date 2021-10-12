@@ -249,6 +249,9 @@ public class Player {
     public void help() {
         System.out.println("Controls:\n Type 'look' to get the description of the current room with its items and weapon and health status" +
                 "\n Type any direction (north, east, south and west) to move to another room" +
-                "\n Type 'exit' to quit the game");
+                "\n Type on of these commands followed with the item that you want to interact with:\n" +
+                "'take', 'drop', 'eat' and 'equip'\n" +
+                " Type 'attack' followed by the name of the enemy in order to attack\n" +
+                " Type 'exit' to quit the game");
     }
 }
