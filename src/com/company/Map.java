@@ -47,8 +47,8 @@ public class Map {
         room9.addItem(meat);
         Weapon axe = new Weapon("axe", "use it if you want to", 5, 5);
         room1.addItem(axe);
-        Item shoe = new Item("shoes", "a pair of shoes to comfort your bare feet");
-        room1.addItem(shoe);
+        Item shoes = new Item("shoes", "a pair of shoes to comfort your bare feet");
+        room1.addItem(shoes);
 
         Weapon club = new Weapon("club","a blodsoaked club", 8);
 
