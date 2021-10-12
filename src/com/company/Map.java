@@ -10,15 +10,14 @@ public class Map {
     }
 
     public Map() {
-        Room room1 = new Room("Room 1", "Greetings earthling! look around, there is a shoe and an axe - See if you want them. Continue to the next room to see what what lays within", true);
-        Room room2 = new Room("Room 2", "Its very humid, remember to get yourself hydrated - Look around to see if there is something do drink and eat", false);
+        Room room1 = new Room("Room 1", "Greetings earthling! look around in the woods, there is a shoe and an axe hidden behind the bushes- See if you want them. Continue to the next room to see what what lays within", true);
+        Room room2 = new Room("Room 2", "The sun is over your head and it's hot, remember to get yourself hydrated - Look around to see if there is something do drink and eat", false);
         Room room3 = new Room("Room 3", "", false);
         Room room4 = new Room("Room 4", "Get some pills for your health, use a little of your wealth. +10 energy", false);
-        Room room5 = new Room("Room 5", "There is a chest in the middle of the room", false);
+        Room room5 = new Room("Room 5", "you are outside the hole now. there is a house on the top of the forrest", false);
         Room room6 = new Room("Room 6", "On a table at the corner of the room there is a rusty old key", false);
         Room room7 = new Room("Room 7", "There is a silver dagger in a fancy glass box", false);
-        Room room8 = new Room("Room 8", "In the middle of the room stands an ugly orc, who seems hostile. " +
-                "He must die before you can continue", false);
+        Room room8 = new Room("Room 8", "In the middle of the room stands an ugly orc, who seems hostile", false);
         Room room9 = new Room("Room 9", "There is a cupboard with some bread and meat", false);
         currentRoom = room1;
 
@@ -48,7 +47,7 @@ public class Map {
         room9.addItem(meat);
         Weapon axe = new Weapon("axe", "use it if you want to", 5, 5);
         room1.addItem(axe);
-        Item shoe = new Item("shoe", " gives you more style for the ladies out there");
+        Item shoe = new Item("shoes", "a pair of shoes to comfort your bare feet");
         room1.addItem(shoe);
 
         Weapon club = new Weapon("club","a bloodsoaked club", 8);
