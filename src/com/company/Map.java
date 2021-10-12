@@ -10,9 +10,9 @@ public class Map {
     }
 
     public Map() {
-        Room room1 = new Room("Room 1", "The first room you will start, will not take your life apart", true);
-        Room room2 = new Room("Room 2", "Some rocks are lying at the bottom of the room, it is very humid", false);
-        Room room3 = new Room("Room 3", "A princess is sleeping on a king size bed at the other end of the room", false);
+        Room room1 = new Room("Room 1", "Greetings earthling! look around, there is a shoe and an axe - See if you want them. Continue to the next room to see what what lays within", true);
+        Room room2 = new Room("Room 2", "Its very humid, remember to get yourself hydrated - Look around to see if there is something do drink and eat", false);
+        Room room3 = new Room("Room 3", "", false);
         Room room4 = new Room("Room 4", "Get some pills for your health, use a little of your wealth. +10 energy", false);
         Room room5 = new Room("Room 5", "There is a chest in the middle of the room", false);
         Room room6 = new Room("Room 6", "On a table at the corner of the room there is a rusty old key", false);
@@ -41,12 +41,16 @@ public class Map {
         room6.addItem(key);
         Weapon dagger = new Weapon("dagger", "a dagger made of silver", 10);
         room7.addItem(dagger);
+        Food water = new Food("Water", "make sure it's clean enough to drink", 5, false);
         Food bread = new Food("bread", "a large loaf of bread", 10, false);
         Food meat = new Food("meat", "some old horse meat", 15, true);
+        room2.addItem(water);
         room9.addItem(bread);
         room9.addItem(meat);
-        Weapon uzi = new Weapon("uzi", "what kind of fuckery is this??", 5, 5);
-        room1.addItem(uzi);
+        Weapon axe = new Weapon("axe", "use it if you want to", 5, 5);
+        room1.addItem(axe);
+        Item shoe = new Item("shoe", " gives you more style for the ladies out there");
+        room1.addItem(shoe);
 
         Enemy orc = new Enemy(20, 3, "orc", "a big ugly orc", room8);
         room8.addEnemy(orc);
