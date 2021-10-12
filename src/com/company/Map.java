@@ -16,9 +16,9 @@ public class Map {
         Room room4 = new Room("Room 4", "You got yourself inside a rabbit hole. find anything there?", false);
         Room room5 = new Room("Room 5", "You have defeated the orc. there is a castle further ahead. dare to go inside?", false);
         Room room6 = new Room("Room 6", "The village is getting closer and closer and you are starting to get hungry now - see if you can find some food, dut be careful now!", false);
-        Room room7 = new Room("Room 7", "it seems that someone forgot his sword - it could be helpful in the future", false);
+        Room room7 = new Room("Room 7", "It seems that someone forgot his sword - it could be helpful in the future", false);
         Room room8 = new Room("Room 8", "In the middle of the room stands an ugly orc, who seems hostile. He is guarding the porch that leads to something. Defeat him or die! ", false);
-        Room room9 = new Room("Room 9", "get through the guards and pay them the toll to continue your journey", false);
+        Room room9 = new Room("Room 9", "Get through the guards and pay them the toll to continue your journey", false);
         currentRoom = room1;
 
         room1.setDirection(null, room2, room4, null);
