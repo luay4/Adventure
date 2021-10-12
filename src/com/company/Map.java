@@ -38,7 +38,6 @@ public class Map {
         Item coins = new Item("coins", "some gold coins");
         room2.addItem(coins);
         Item key = new Item("key", "a rusty old key");
-        room6.addItem(key);
         Weapon dagger = new Weapon("dagger", "a dagger made of silver", 10);
         room7.addItem(dagger);
         Food bread = new Food("bread", "a large loaf of bread", 10, false);
@@ -48,8 +47,11 @@ public class Map {
         Weapon uzi = new Weapon("uzi", "what kind of fuckery is this??", 5, 5);
         room1.addItem(uzi);
 
-        Enemy orc = new Enemy(20, 3, "orc", "a big ugly orc", room8);
+        Weapon club = new Weapon("club","a blodsoaked club", 8);
+
+        Enemy orc = new Enemy(20, "orc", "a big ugly orc", club);
         room8.addEnemy(orc);
+        orc.enemyItems.add(key);
 
     }
 }

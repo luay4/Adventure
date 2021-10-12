@@ -201,14 +201,16 @@ public class Player {
                 System.out.println(enemyNPC.getEnemyHealth());
                 if (enemyNPC.getEnemyHealth() <= 0) {
                     System.out.println("You killed the enemy!");
+                    currentRoom.itemList.add(enemyNPC.getEnemyWeapon());
                     currentRoom.enemyList.remove(enemyNPC);
-                }
-                System.out.println("The enemy attacks");
-                enemyAttacks(enemyNPC.getEnemyDamage());
-                System.out.print("Your hp: ");
-                System.out.println(health);
-                if (health <= 0) {
-                    System.out.println("You died!");
+                } else {
+                    System.out.println("The enemy attacks");
+                    enemyAttacks(enemyNPC.getEnemyWeapon().getWeaponDamage());
+                    System.out.print("Your hp: ");
+                    System.out.println(health);
+                    if (health <= 0) {
+                        System.out.println("You died!");
+                    }
                 }
             }
         }
@@ -221,6 +223,17 @@ public class Player {
     public void look() {
         System.out.println(currentRoom.getRoomDescription());
         System.out.println("Current health: " + health);
+        if (health >= 40) {
+            System.out.println("You are at good health");
+        } else if (health >= 30) {
+            System.out.println("You are a little wounded");
+        } else if (health >= 20) {
+            System.out.println("You health is low, try eating some food");
+        } else if (health >= 10) {
+            System.out.println("You health is very low, avoid enemies");
+        } else {
+            System.out.println("You are at critical health, try not to die");
+        }
         if (currentWeapon != null) {
             if (currentWeapon.getAmmo() != -1) {
                 System.out.println("Equipped weapon: " + currentWeapon.getItemName()
