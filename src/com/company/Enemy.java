@@ -1,22 +1,23 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Enemy {
     private int enemyHealth;
-    private int enemyDamage;
     private String enemyName;
     private String enemyDescription;
-    private Room currentRoom;
+    ArrayList<Item> enemyItems = new ArrayList<>();
+    private Weapon enemyWeapon;
 
-    public Enemy(int health, int damage, String name, String description, Room currentRoom) {
+    public Enemy(int health, String name, String description, Weapon enemyWeapon) {
         this.enemyHealth = health;
-        this.enemyDamage = damage;
         this.enemyName = name;
         this.enemyDescription = description;
-        this.currentRoom = currentRoom;
+        this.enemyWeapon = enemyWeapon;
     }
 
-    public int getEnemyDamage() {
-        return enemyDamage;
+    public Weapon getEnemyWeapon() {
+        return enemyWeapon;
     }
 
     public int getEnemyHealth() {
