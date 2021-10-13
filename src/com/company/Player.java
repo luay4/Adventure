@@ -195,8 +195,7 @@ public class Player {
                 } else {
                     System.out.println("Out of ammo");
                 }
-            }
-            else {
+            } else {
                 System.out.println("You attack with your weapon");
                 enemyNPC.dealDamageToEnemy(getCurrentWeapon().getWeaponDamage());
                 System.out.print("Enemy hp: ");
